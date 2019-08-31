@@ -16,7 +16,7 @@
                             {{ session()->get('message') }}
                         </div>
                         @endif
-                        <table id="tabelpelanggan" class="table">
+                        <table id="tabelpelanggan" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -24,6 +24,7 @@
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>No HP</th>
+                                <th>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -35,20 +36,15 @@
                                         <td>{{ $list->nama }}</td>
                                         <td>{{ $list->alamat }}</td>
                                         <td>{{ $list->hp }}</td>
-                                        <td>
-                                            <center>
-                                                <button class="btn btn-small btn-warning" onclick="window.location.
-                                                    href='{{ route('pelanggan.edit', $list->id) }}'">Ubah
-                                                </button>
-                                            </center>
-                                            <hr>
-                                            <center>
-                                                <form action="{{ route('pelanggan.destroy', $list->id) }}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button class="btn btn-small btn-primary">Hapus</button>
-                                                </form>
-                                            </center>
+                                        <td style="display: inline-flex">
+                                            <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
+                                                href='{{ route('pelanggan.edit', $list->id) }}'">Ubah
+                                            </button>
+                                            <form action="{{ route('pelanggan.destroy', $list->id) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-small btn-primary">Hapus</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -76,5 +72,11 @@
   <!-- partial -->
 </div>
 <!-- main-panel ends -->
+
+<script>
+        $(document).ready(function() {
+            $('#tabelpelanggan').DataTable();
+        } );
+</script>
 
 @endsection

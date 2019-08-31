@@ -12,19 +12,12 @@
   <!-- endinject -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 </head>
 <body>
-  <div class="container-scroller">
-    @include('inc.navbar')
-    <div class="container-fluid page-body-wrapper">
-      @include('inc.sidebar')
-      @yield('content')
-    </div>
-  </div>
-  <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('vendors/js/vendor.bundle.addons.js') }}"></script>
@@ -38,7 +31,18 @@
   <!-- Custom js for this page-->
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <script src="{{ asset('js/dashboard.js') }}"></script>
+  <script src="{{ asset('js/datatables.min.js') }}"></script>
   <!-- End custom js for this page-->
+
+  <div class="container-scroller">
+    @include('inc.navbar')
+    <div class="container-fluid page-body-wrapper">
+      @include('inc.sidebar')
+      @yield('content')
+    </div>
+  </div>
+  <!-- container-scroller -->
+
 </body>
 
 </html>
