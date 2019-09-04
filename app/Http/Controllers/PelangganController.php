@@ -47,12 +47,14 @@ class PelangganController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'hp' => 'required',
+            'meteran' => 'required',
             ]);
         $data = new pelanggan;
         $data->rekening = $request->rekening;
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->hp = $request->hp;
+        $data->meteran = $request->meteran;
         $data->save();
 
         return redirect('/pelanggan')->with('message','Tambah Data Berhasil');
@@ -97,12 +99,14 @@ class PelangganController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'hp' => 'required',
+            'meteran' => 'required',
             ]);
         $data = pelanggan::find($id);
         $data->rekening = $request->rekening;
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->hp = $request->hp;
+        $data->meteran = $request->meteran;
         $data->save();
 
         return redirect('/pelanggan')->with('message','Perubahan Data Berhasil');

@@ -10,13 +10,11 @@
           <div class="nav-profile-text d-flex flex-column">
             <span class="font-weight-bold mb-2">ADMIN</span>
           </div>
-          
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/') }}">
           <span class="menu-title">Dashboard</span>
-          
         </a>
       </li>
       <li class="nav-item">

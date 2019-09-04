@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePelangganTable extends Migration
+class CreateHargaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreatePelangganTable extends Migration
      */
     public function up()
     {
-        Schema::create('pelanggan', function (Blueprint $table) {
+        Schema::create('harga', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('rekening')->unique();
-            $table->string('nama');
-            $table->string('alamat')->nullable();
-            $table->double('hp',15);
-            $table->double('meteran');
+            $table->integer('harga_pakai');
+            $table->integer('harga_beban');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreatePelangganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelanggan');
+        Schema::dropIfExists('harga');
     }
 }
