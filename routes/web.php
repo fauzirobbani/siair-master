@@ -21,4 +21,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tagihan/datapelanggan', 'TagihanController@datapelanggan')->name('tagihan.datapelanggan');
+// Route::get('/tagihan/store', 'TagihanController@store')->name('tagihan.store');
+
 Route::resource('pelanggan', 'PelangganController');
+Route::resource('harga', 'HargaController');
+Route::resource('tagihan', 'TagihanController')->except([
+    'datapelanggan'
+]);
+

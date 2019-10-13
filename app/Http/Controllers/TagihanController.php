@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\model\harga;
+use App\model\Transaksi;
+use App\Model\Harga;
+use App\pelanggan;
+use Validation;
 
-class HargaController extends Controller
+use Carbon\Carbon;
+
+class TagihanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +19,6 @@ class HargaController extends Controller
     public function index()
     {
         //
-        $show = harga::all();
-        $data = [
-            'show' => $show,
-        ];
-        return view('pages.harga')->with('list', $data);
     }
 
     /**
@@ -29,8 +28,10 @@ class HargaController extends Controller
      */
     public function create()
     {
-        //
-        return view('pages.tambahharga');
+        $harga = Harga::first();
+        $pelanggan= Pelanggan::get();
+        return view('pages.tambahtagihan', compact('harga', 'pelanggan'));
+
     }
 
     /**
@@ -41,17 +42,32 @@ class HargaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request,[
-            'harga_pakai' => 'required',
-            'harga_beban' => 'required',
-            ]);
-        $data = new harga;
-        $data->harga_pakai = $request->harga_pakai;
-        $data->harga_beban = $request->harga_beban;
-        $data->save();
+        // $this->validate($request,[
+        //     'harga_pakai' => 'required',
+        //     'harga_beban' => 'required',
+        //     ]);
+        
+        $bulan = Carbon::now()->format('m');
+        $tahun = Carbon::now()->format('Y');
+        $tanggal = Carbon::now()->format('Y/m/d');
 
-        return redirect('/harga')->with('message','Tambah Data Berhasil');
+        $id_pelanggan = Pelanggan::where('rekening', $request->no_rekening)->first();
+
+        $data = Transaksi::updateOrCreate([
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+            'id_pelanggan' => $id_pelanggan->id,
+
+        ],
+        [
+            'meteran_baru' => $request->meteran_baru,
+            'meteran_tagihan' => $request->volume,
+            'status_bayar' => "0",
+            'tagihan' => $request->total,
+
+        ]);
+
+        return redirect('/tagihan')->with('message','Tambah Data Berhasil');
     }
 
     /**
@@ -74,8 +90,6 @@ class HargaController extends Controller
     public function edit($id)
     {
         //
-        $data = harga::find($id);
-        return view('pages.editharga')->with('list', $data);
     }
 
     /**
@@ -88,16 +102,6 @@ class HargaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[
-            'harga_pakai' => 'required',
-            'harga_beban' => 'required',
-            ]);
-        $data = harga::find($id);
-        $data->harga_pakai = $request->harga_pakai;
-        $data->harga_beban = $request->harga_beban;
-        $data->save();
-
-        return redirect('/harga')->with('message','Perubahan Data Berhasil');
     }
 
     /**
@@ -109,9 +113,13 @@ class HargaController extends Controller
     public function destroy($id)
     {
         //
-        $data = harga::find($id);
-        $data->delete();
-        // redirect
-        return \Redirect::to('/harga')->with('message','Hapus Data harga Berhasil');
+    }
+    
+    
+    public function datapelanggan(Request $request)
+    {
+        $data = Pelanggan::where('rekening', $request->kode)->first();
+        
+        return $data;
     }
 }

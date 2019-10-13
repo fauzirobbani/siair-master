@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
   
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 </head>
@@ -39,6 +40,7 @@
     <div class="container-fluid page-body-wrapper">
       @include('inc.sidebar')
       @yield('content')
+      @yield('script')
     </div>
   </div>
   <!-- container-scroller -->

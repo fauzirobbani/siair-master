@@ -8,4 +8,5 @@ use App\Model\Transaksi;
 class TransaksiController extends Controller
 {
     //
+    
 }
