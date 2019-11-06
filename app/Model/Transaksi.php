@@ -11,16 +11,11 @@ class Transaksi extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'id_pelanggan',
-        'meteran_baru',
-        'meteran_tagihan',
+        'id_tagihan',
         'pembayaran',
-        'tagihan',
         'kembalian',
-        'tanggal',
-        'bulan',
-        'tahun',
-        'status_bayar',
-
+        'tanggal_transaksi',
+        'bulan_transaksi',
+        'tahun_transaksi',
     ];
 }

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\model\harga;
+use App\model\Tagihan;
+use App\model\Transaksi;
+use App\model\Laporan;
+use App\Model\Harga;
 
-class HargaController extends Controller
+use App\pelanggan;
+
+class LaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +20,17 @@ class HargaController extends Controller
     public function index()
     {
         //
-        $show = harga::all();
+        //
+
+        $show = transaksi::all();
+
         $data = [
             'show' => $show,
         ];
-        return view('pages.admin.harga.harga')->with('list', $data);
+        // return $show;
+        // die;
+        return view('pages.admin.laporan.laporan')->with('list', $data);
+
     }
 
     /**
@@ -30,7 +41,6 @@ class HargaController extends Controller
     public function create()
     {
         //
-        return view('pages.admin.harga.tambahharga');
     }
 
     /**
@@ -42,16 +52,6 @@ class HargaController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'harga_pakai' => 'required',
-            'harga_beban' => 'required',
-            ]);
-        $data = new harga;
-        $data->harga_pakai = $request->harga_pakai;
-        $data->harga_beban = $request->harga_beban;
-        $data->save();
-
-        return redirect('/harga')->with('message','Tambah Data Berhasil');
     }
 
     /**
@@ -74,8 +74,6 @@ class HargaController extends Controller
     public function edit($id)
     {
         //
-        $data = harga::find($id);
-        return view('pages.admin.harga.editharga')->with('list', $data);
     }
 
     /**
@@ -88,16 +86,6 @@ class HargaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[
-            'harga_pakai' => 'required',
-            'harga_beban' => 'required',
-            ]);
-        $data = harga::find($id);
-        $data->harga_pakai = $request->harga_pakai;
-        $data->harga_beban = $request->harga_beban;
-        $data->save();
-
-        return redirect('/harga')->with('message','Perubahan Data Berhasil');
     }
 
     /**
@@ -109,9 +97,12 @@ class HargaController extends Controller
     public function destroy($id)
     {
         //
-        $data = harga::find($id);
-        $data->delete();
-        // redirect
-        return \Redirect::to('/harga')->with('message','Hapus Data harga Berhasil');
+    }
+
+    public function datapelanggan(Request $request)
+    {
+        $data = Pelanggan::where('rekening', $request->kode)->first();
+
+        return $data;
     }
 }

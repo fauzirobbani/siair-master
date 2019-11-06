@@ -15,16 +15,12 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_pelanggan');
-            $table->integer('meteran_baru');
-            $table->integer('meteran_tagihan');
+            $table->integer('id_tagihan');
             $table->integer('pembayaran');
-            $table->integer('tagihan');
             $table->integer('kembalian');
-            $table->date('tanggal');
-            $table->integer('bulan');
-            $table->integer('tahun');
-            $table->integer('status_bayar');
+            $table->date('tanggal_transaksi');
+            $table->integer('bulan_transaksi');
+            $table->integer('tahun_transaksi');
             $table->timestamps();
         });
     }

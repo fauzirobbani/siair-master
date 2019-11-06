@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pelanggan;
+use App\model\pelanggan;
 
 class PelangganController extends Controller
 {
@@ -19,7 +19,7 @@ class PelangganController extends Controller
         $data = [
             'show' => $show,
         ];
-        return view('pages.pelanggan')->with('list', $data);
+        return view('pages.admin.pelanggan.pelanggan')->with('list', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class PelangganController extends Controller
     public function create()
     {
         //
-        return view('pages.tambahpelanggan');
+        return view('pages.admin.pelanggan.tambahpelanggan');
     }
 
     /**
@@ -81,7 +81,7 @@ class PelangganController extends Controller
     {
         //
         $data = pelanggan::find($id);
-        return view('pages.editpelanggan')->with('list', $data);
+        return view('pages.admin.pelanggan.editpelanggan')->with('list', $data);
     }
 
     /**

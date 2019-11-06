@@ -9,15 +9,15 @@
         <form class="d-flex align-items-center h-100" action="#">
           <div class="input-group">
             <div class="input-group-prepend bg-transparent">
-                                
+
             </div>
-            
+
           </div>
         </form>
       </div>
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item nav-profile dropdown">
-          
+
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
             <a class="dropdown-item" href="#">
               <i class="mdi mdi-cached mr-2 text-success"></i>
@@ -136,7 +136,7 @@
           </div>
         </li>
         <li class="nav-item nav-logout d-none d-lg-block">
-          <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('logout')}}">
             <i class="mdi mdi-power"></i>
           </a>
         </li>

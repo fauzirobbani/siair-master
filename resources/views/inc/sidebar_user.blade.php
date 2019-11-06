@@ -8,7 +8,7 @@
             <span class="login-status online"></span>
           </div>
           <div class="nav-profile-text d-flex flex-column">
-            <span class="font-weight-bold mb-2">ADMIN</span>
+            <span class="font-weight-bold mb-2">USERS</span>
           </div>
         </a>
       </li>
@@ -18,23 +18,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/pelanggan') }}">
-          <span class="menu-title">Pelanggan</span>
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{{ url('/tagihan') }}" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Tagihan</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/laporan') }}">
-          <span class="menu-title">Laporan</span>
+          <span class="menu-title">Laporan Pembayaran</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/user') }}">
-          <span class="menu-title">User</span>
+        <a class="nav-link" href="{{ url('/') }}">
+          <span class="menu-title">Setting</span>
         </a>
       </li>
     </ul>
