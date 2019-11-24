@@ -33,6 +33,11 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ url('/harga') }}">
+          <span class="menu-title">Harga</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ url('/user') }}">
           <span class="menu-title">User</span>
         </a>

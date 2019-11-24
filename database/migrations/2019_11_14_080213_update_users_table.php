@@ -15,7 +15,9 @@ class UpdateUsersTable extends Migration
     {
         //
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('status');
+            $table->integer('status')->after('password');
+            $table->string('username')->after('name');
+
         });
     }
 

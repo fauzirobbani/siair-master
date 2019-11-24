@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/login', function () {
-    return view('welcome');
-});
+// Route::get('/login', function () {
+//     return view('welcome');
+// });
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -21,7 +21,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 //     return view('pages.index');
 // })->name('home');
 
-Auth::routes();
+
+Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/tagihan/datapelanggan', 'TagihanController@datapelanggan')->name('tagihan.datapelanggan');
@@ -29,7 +30,7 @@ Route::get('/tagihan/datapelanggan', 'TagihanController@datapelanggan')->name('t
 Route::get('/tagihan/pembayaran/{id}', 'TagihanController@pembayaran')->name('tagihan.pembayaran');
 Route::post('/tagihan/pembayaran/{id}', 'TagihanController@storepembayaran')->name('tagihan.pembayaran.store');
 
-
+// Route::get('/datapribadi','PelangganCOntroller@datapribadi');
 
 
 // Route::get('/tagihan/store', 'TagihanController@store')->name('tagihan.store');
@@ -38,3 +39,28 @@ Route::resource('pelanggan', 'PelangganController');
 Route::resource('harga', 'HargaController');
 Route::resource('tagihan', 'TagihanController')->except(['datapelanggan']);
 Route::resource('laporan', 'laporanController');
+
+Route::group(['middleware' => ['auth']], function(){
+
+// Registration Routes...
+Route::get('/newuser', 'RegisterController@form')->name('newuser');
+Route::post('/newuser', 'RegisterController@create');
+
+// Registration Routes...
+Route::get('/newpelanggan', 'RegisterController@formpelanggan')->name('newpelanggan');
+Route::post('/newpelanggan', 'RegisterController@createpelanggan');
+
+Route::get('/user', 'AdminController@index')->name('user');
+
+//user
+Route::get('/datapribadi', 'User\DataPribadiController@index')->name('datapribadi');
+Route::get('/datapribadi/edit/{id}', 'User\DataPribadiController@edit')->name('datapribadi.edit');
+Route::post('/datapribadi/edit/{id}', 'User\DataPribadiController@update')->name('datapribadi.edit.store');
+
+
+Route::get('user/tagihan', 'User\TagihanController@index')->name('user.tagihan');
+
+Route::get('user/laporan', 'User\LaporanController@index')->name('user.laporan');
+
+
+});

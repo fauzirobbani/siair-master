@@ -21,7 +21,7 @@ class TagihanController extends Controller
     {
         //
 
-        $show = tagihan::with('pelanggan')->get();
+        $show = tagihan::with('pelanggan')->where('status_bayar', '0')->get();
 
         $data = [
             'show' => $show,
@@ -145,8 +145,8 @@ class TagihanController extends Controller
     {
         //
         $tagihan = Tagihan::where('id', $id)->first();
-        // $pelanggan= Pelanggan::get();
-        return view('pages.admin.tagihan.pembayaran', compact('tagihan'));
+        $pelanggan= Pelanggan::where('id',$id)->first();
+        return view('pages.admin.tagihan.pembayaran', compact('pelanggan', 'tagihan'));
     }
 
     public function storepembayaran(Request $request, $id)
@@ -169,6 +169,10 @@ class TagihanController extends Controller
         $transaksi->tahun_transaksi = $tagihan->tahun;
 
         $transaksi->save();
+
+        $meteran = Pelanggan::findOrfail($tagihan->id);
+        $meteran->meteran = $meteran->meteran+$tagihan->meteran_baru;
+        $meteran->save();
 
         return redirect('/tagihan');
 

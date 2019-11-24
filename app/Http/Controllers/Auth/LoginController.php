@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
 
 use Auth;
 use Illuminate\Http\Request;
@@ -43,6 +44,22 @@ class LoginController extends Controller
     public function logout(Request $request) {
         Auth::logout();
         return redirect('/login');
-      }
+    }
+
+
+    public function login(Request $request)
+    {
+    $username = $request->username;
+
+    $user = User::where('username', $username)->first();
+
+    if (!$user) {
+    return redirect()->back()->withInput($request->only('username'))->with('username', ['your message,here']);
+    }
+
+    Auth::loginUsingId($user->id);
+    return redirect('/');
+
+    }
 
 }

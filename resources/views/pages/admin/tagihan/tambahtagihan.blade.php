@@ -14,11 +14,11 @@
             <div class="col-md-6">
               <div class="form-group">
                 <Label>No Rekening</Label>
-                {{-- <input type="text" class="form-control" name="no_rekening" id="no_rekening" placeholder=""> --}}                
+                {{-- <input type="text" class="form-control" name="no_rekening" id="no_rekening" placeholder=""> --}}
                 <select name="no_rekening" id="no_rekening" class="form-control rekening">
                   <option value="">Silahkan Pilih</option>
                   @foreach ($pelanggan as $item)
-                    <option value="{{$item->rekening}}">{{$item->rekening}}</option>                      
+                    <option value="{{$item->rekening}}">{{$item->rekening}}</option>
                   @endforeach
                 </select>
               </div>
@@ -48,7 +48,7 @@
                 <Label>Volume</Label>
                 <input type="text" class="form-control" name="volume" id="volume">
               </div>
-              
+
               <table id="tabelpelanggan" class="table table-bordered table-striped" >
                 <thead>
                   <tr>
@@ -58,7 +58,7 @@
                   </tr>
                   <tr>
                     <th><input type="text" class="form-control" name="harga_pakai" id="harga_pakai" value="{{$harga->harga_pakai}}" disabled></th>
-                    <input type="text" class="form-control" name="harga_pakai_utama" id="harga_pakai_utama" value="{{$harga->harga_pakai}}" hidden>                        
+                    <input type="text" class="form-control" name="harga_pakai_utama" id="harga_pakai_utama" value="{{$harga->harga_pakai}}" hidden>
                     <th><input type="text" class="form-control" name="harga_beban" id="harga_beban" value="{{$harga->harga_beban}}" disabled></th>
                     <th><input type="text" class="form-control" name="total" id="total" value="" ></th>
                   </tr>
@@ -66,7 +66,7 @@
               </table>
             </div>
           </div>
-          
+
           <div style="text-align: center">
             <button class="btn btn-success">Submit</button>
           </div>
@@ -87,16 +87,17 @@ $(document).ready(function() {
     $('.rekening').select2();
 });
 </script>
+
 <script>
-    $(document).on('change', '#no_rekening',  function(){      
+    $(document).on('change', '#no_rekening',  function(){
         var index=$('#no_rekening').val();
         console.log(index);
-        
+
         $.ajax({
             url:"{{ route('tagihan.datapelanggan', 'kode=') }}"+index,
 
             type:'GET',
-            
+
             success: function(data){
                 console.log(data);
                 $('#nama').val(data.nama);
@@ -104,12 +105,12 @@ $(document).ready(function() {
                 $('#hp').val(data.hp);
                 $('#meteran').val(data.meteran);
 
-                
+
             },
             error: function(error){
                 console.log(error);
                 if (error.status == 422) {
-                    
+
                 }
                 else {
                     alert()
@@ -126,10 +127,11 @@ $(document).ready(function() {
     var harga_pakai=$('#harga_pakai_utama').val();
     var harga_beban=$('#harga_beban').val();
     var volume = meteran_baru-meteran;
-    
+
     console.log(harga_pakai);
 
     // var total = Number(volume)*Number(harga_pakai)+Number(hargabeban);
+    // fungsi hitung total
     var total = (volume*harga_pakai);
     $('#harga_pakai').val(total);
     total = Number(total)+Number(harga_beban);
@@ -140,7 +142,7 @@ $(document).ready(function() {
   })
 </script>
 @endsection
-    
+
 {{-- <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>

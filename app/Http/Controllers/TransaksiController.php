@@ -19,9 +19,9 @@ class TransaksiController extends Controller
     public function index()
     {
         //
-       
-       
-        
+
+
+
     }
 
     /**
@@ -29,12 +29,13 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $tagihan = Tagihan::where('id', $id)->first();
-        // $pelanggan= Pelanggan::get();
-        return view('pages.pembayaran', compact('tagihan'));
-        
+        //dd ('cek');
+        $tagihan = Tagihan::first();
+        $pelanggan= Pelanggan::get();
+        return view('pages.pembayaran', compact('tagihan', 'pelanggan'));
+
     }
 
     /**
@@ -43,29 +44,9 @@ class TransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         //
-        // dd($request);
-        $tanggal = Carbon::now()->format('Y/m/d');
-
-        $tagihan = Tagihan::findOrfail($id);
-        $tagihan->status_bayar = 1;
-        $tagihan->tanggal = $tanggal;
-
-        $tagihan->save();
-
-        $transaksi = new Transaksi;
-        $transaksi->id_tagihan = $tagihan->id; 
-        $transaksi->pembayaran = $request->pembayaran;
-        $transaksi->kembalian = $request->pembayaran - $tagihan->tagihan;
-        $transaksi->tanggal_transaksi = $tanggal;
-        $transaksi->bulan_transaksi = $tagihan->bulan;
-        $transaksi->tahun_transaksi = $tagihan->tahun;
-
-        $transaksi->save();
-    
-        return redirect('/tagihan');
     }
 
     /**

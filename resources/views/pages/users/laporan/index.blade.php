@@ -4,12 +4,12 @@
 
 <div class="main-panel">
     <div class="content-wrapper">
-        <button class="btn btn-gradient-success mt-4" onclick="window.location.href='{{ route('tagihan.create') }}'">+ Tambah Tagihan</button> <br><br>
+
         <div class="row">
             <div class="col-md-12 stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title">Tabel Tagihan</p>
+                        <p class="card-title">Tabel Laporan Pembayaran</p>
                         <div class="table-responsive">
                             @if(session()->has('message'))
                             <div class="alert alert-success">
@@ -21,44 +21,39 @@
                                 <thead>
                                     <tr>
                                             <th>No</th>
-                                            <th>Nomor Rekening</th>
-                                            <th>Nama</th>
-                                            <th>Volume</th>
+                                            <th>Periode</th>
+                                            <th>Status Bayar</th>
+                                            <th>Tanggal Pelunasan</th>
+                                            <th>Meteran Baru</th>
+                                            <th>Volume Penggunaan</th>
                                             <th>Tagihan</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th>Dibayarkan</th>
+                                            <th>Kembalian</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                         @if(count($list) > 0)
-                                        @foreach($list['show'] as $list)
+                                        @foreach($list as $val)
                                         <tr>
-                                            <td>{{ $loop->iteration}}</td>
-                                            <td>{{ $list->pelanggan->rekening }}</td>
-                                            <td>{{ $list->pelanggan->nama }}</td>
-                                            <td>{{ $list->volume }}</td>
-                                            <td>{{ $list->tagihan }}</td>
-                                            @if ($list->status_bayar == 0)
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{$val->bulan}}/{{$val->tahun}}</td>
+                                            @if ($val->status_bayar == 0)
                                             <td>Belum Lunas</td>
                                             @else
                                             <td>Lunas</td>
                                             @endif
-                                            <td style="display: inline-flex">
-                                                <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
-                                                    href='{{ route('tagihan.show', $list->id) }}'">Detail
-                                                </button>
-                                            </td>
-                                            <td style="display: inline-flex">
-                                                <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
-                                                    href='{{route('tagihan.pembayaran', $list->id) }}'">Bayar
-                                                </button>
-                                            </td>
+                                            <td>{{$val->transaksi->tanggal_transaksi}}</td>
+                                            <td>{{$val->meteran_baru}}</td>
+                                            <td>{{$val->volume}}</td>
+                                            <td>{{$val->tagihan}}</td>
+                                            <td>{{$val->transaksi->pembayaran}}</td>
+                                            <td>{{$val->transaksi->kembalian}}</td>
                                         </tr>
                                         @endforeach
                                         @else
                                         <tr>
-                                            <td colspan=3>Tidak Ada Data</td>
+                                            <td colspan="9" align="center">Tidak Ada Data</td>
                                         </tr>
                                         @endif
                                 </tbody>
