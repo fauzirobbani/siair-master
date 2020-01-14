@@ -21,7 +21,7 @@ class PelangganController extends Controller
         $data = [
             'show' => $show,
         ];
-        return view('pages.admin.pelanggan.pelanggan')->with('list', $data);
+        return view('pages.admin.pelanggan.index')->with('list', $data);
     }
 
     /**
@@ -83,7 +83,7 @@ class PelangganController extends Controller
     {
         //
         $data = pelanggan::find($id);
-        return view('pages.admin.pelanggan.editpelanggan')->with('list', $data);
+        return view('pages.admin.pelanggan.edit')->with('list', $data);
     }
 
     /**
@@ -95,20 +95,19 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $this->validate($request,[
             'rekening' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
             'hp' => 'required',
-            'meteran' => 'required',
+            // 'meteran' => 'required',
             ]);
         $data = pelanggan::find($id);
         $data->rekening = $request->rekening;
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->hp = $request->hp;
-        $data->meteran = $request->meteran;
+        // $data->meteran = $request->meteran;
         $data->save();
 
         return redirect('/pelanggan')->with('message','Perubahan Data Berhasil');

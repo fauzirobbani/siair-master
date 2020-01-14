@@ -42,5 +42,10 @@
           <span class="menu-title">User</span>
         </a>
       </li>
+      {{-- <li class="nav-item">
+        <a class="nav-link" href="{{route('logout')}}">
+          <span class="menu-title">Logout</span>
+        </a>
+      </li> --}}
     </ul>
   </nav>

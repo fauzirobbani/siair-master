@@ -28,7 +28,7 @@ class TagihanController extends Controller
         ];
         // return $show;
         // die;
-        return view('pages.admin.tagihan.tagihan')->with('list', $data);
+        return view('pages.admin.tagihan.index')->with('list', $data);
 
 
 
@@ -45,7 +45,7 @@ class TagihanController extends Controller
         //
         $harga = Harga::first();
         $pelanggan= Pelanggan::get();
-        return view('pages.admin.tagihan.tambahtagihan', compact('harga', 'pelanggan'));
+        return view('pages.admin.tagihan.create', compact('harga', 'pelanggan'));
 
     }
 
@@ -146,7 +146,7 @@ class TagihanController extends Controller
         //
         $tagihan = Tagihan::where('id', $id)->first();
         $pelanggan= Pelanggan::where('id',$id)->first();
-        return view('pages.admin.tagihan.pembayaran', compact('pelanggan', 'tagihan'));
+        return view('pages.admin.tagihan.payment', compact('pelanggan', 'tagihan'));
     }
 
     public function storepembayaran(Request $request, $id)
@@ -162,6 +162,7 @@ class TagihanController extends Controller
 
         $transaksi = new Transaksi;
         $transaksi->id_tagihan = $tagihan->id;
+        $transaksi->id_pelanggan = $tagihan->id_pelanggan;
         $transaksi->pembayaran = $request->pembayaran;
         $transaksi->kembalian = $request->pembayaran - $tagihan->tagihan;
         $transaksi->tanggal_transaksi = $tanggal;

@@ -22,14 +22,15 @@ class LaporanController extends Controller
         //
         //
 
-        $show = transaksi::all();
+        $show = transaksi::with('pelanggan','tagihan')->get();
 
         $data = [
             'show' => $show,
         ];
+        // dd($data);
         // return $show;
         // die;
-        return view('pages.admin.laporan.laporan')->with('list', $data);
+        return view('pages.admin.laporan.index')->with('list', $data);
 
     }
 
@@ -62,7 +63,8 @@ class LaporanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Transaksi::where('id', $id)->first();
+        return view('admin.invoice.index', compact('data'));
     }
 
     /**

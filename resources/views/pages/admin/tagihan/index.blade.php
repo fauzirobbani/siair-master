@@ -23,6 +23,7 @@
                                             <th>No</th>
                                             <th>Nomor Rekening</th>
                                             <th>Nama</th>
+                                            <th>Meteran Baru</th>
                                             <th>Volume</th>
                                             <th>Tagihan</th>
                                             <th>Status</th>
@@ -37,6 +38,7 @@
                                             <td>{{ $loop->iteration}}</td>
                                             <td>{{ $list->pelanggan->rekening }}</td>
                                             <td>{{ $list->pelanggan->nama }}</td>
+                                            <td>{{ $list->meteran_baru }}</td>
                                             <td>{{ $list->volume }}</td>
                                             <td>{{ $list->tagihan }}</td>
                                             @if ($list->status_bayar == 0)
@@ -44,11 +46,11 @@
                                             @else
                                             <td>Lunas</td>
                                             @endif
-                                            <td style="display: inline-flex">
+                                            {{-- <td style="display: inline-flex">
                                                 <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
                                                     href='{{ route('tagihan.show', $list->id) }}'">Detail
                                                 </button>
-                                            </td>
+                                            </td> --}}
                                             <td style="display: inline-flex">
                                                 <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
                                                     href='{{route('tagihan.pembayaran', $list->id) }}'">Bayar

@@ -19,7 +19,7 @@ class HargaController extends Controller
         $data = [
             'show' => $show,
         ];
-        return view('pages.admin.harga.harga')->with('list', $data);
+        return view('pages.admin.harga.index')->with('list', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class HargaController extends Controller
     public function create()
     {
         //
-        return view('pages.admin.harga.tambahharga');
+        return view('pages.admin.harga.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class HargaController extends Controller
     {
         //
         $data = harga::find($id);
-        return view('pages.admin.harga.editharga')->with('list', $data);
+        return view('pages.admin.harga.edit')->with('list', $data);
     }
 
     /**

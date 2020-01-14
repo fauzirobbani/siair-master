@@ -12,7 +12,7 @@
             <div class="col-12">
               <span class="d-flex align-items-center purchase-popup">
 
-                    <p>Selamat datang.{{Auth::user()->name}}</p>
+                    <p>Selamat Datang {{Auth::user()->name}}</p>
               </span>
             </div>
           </div>

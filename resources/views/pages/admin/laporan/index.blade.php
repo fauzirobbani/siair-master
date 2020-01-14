@@ -37,16 +37,14 @@
                                     <tr>
                                         <td>{{ $list->id }}</td>
                                         <td>{{ $list->tanggal_transaksi }}</td>
-                                        <td>{{ $list->rekening }}</td>
-                                        <td>{{ $list->nama }}</td>
-                                        <td>{{ $list->tagihan }}</td>
+                                        <td>{{ $list->pelanggan->rekening }}</td>
+                                        <td>{{ $list->pelanggan->nama }}</td>
+                                        <td>{{ $list->tagihan->tagihan }}</td>
                                         <td>{{ $list->pembayaran }}</td>
                                         <td>{{ $list->kembalian }}</td>
-
-
                                         <td style="display: inline-flex">
                                             <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
-                                                href='{{ route('tagihan.show', $list->id) }}'">Print
+                                                href='{{ route('laporan.show', $list->id) }}'">Print
                                             </button>
                                         </td>
                                     </tr>
