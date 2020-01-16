@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\model\Tagihan;
-use App\model\Transaksi;
+use App\Model\Tagihan;
+use App\Model\Transaksi;
 use App\Model\Harga;
 use App\Model\pelanggan;
 use Validation;

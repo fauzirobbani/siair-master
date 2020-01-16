@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\model\harga;
+use App\Model\Harga;
 
 class HargaController extends Controller
 {
