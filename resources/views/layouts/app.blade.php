@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
+        
+    <script type="text/javascript" src=" {{ asset('js/datatables.min.js') }}"></script>
 </head>
 <body>
     <div id="app">

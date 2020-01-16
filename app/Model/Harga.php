@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pelanggan extends Model
+class Harga extends Model
 {
     //
-    protected $table = 'pelanggan';
+    protected $table = 'harga';
     public $timestamps = true;
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pelanggan;
+use App\model\pelanggan;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PelangganController extends Controller
 {
@@ -19,7 +21,7 @@ class PelangganController extends Controller
         $data = [
             'show' => $show,
         ];
-        return view('pages.pelanggan')->with('list', $data);
+        return view('pages.admin.pelanggan.index')->with('list', $data);
     }
 
     /**
@@ -27,11 +29,11 @@ class PelangganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-        return view('pages.tambahpelanggan');
-    }
+    // public function create()
+    // {
+    //     //
+    //     return view('pages.admin.pelanggan.tambahpelanggan');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -39,24 +41,26 @@ class PelangganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-        $this->validate($request,[
-            'rekening' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'hp' => 'required',
-            ]);
-        $data = new pelanggan;
-        $data->rekening = $request->rekening;
-        $data->nama = $request->nama;
-        $data->alamat = $request->alamat;
-        $data->hp = $request->hp;
-        $data->save();
+    // public function store(Request $request)
+    // {
+    //     //
+    //     $this->validate($request,[
+    //         'rekening' => 'required',
+    //         'nama' => 'required',
+    //         'alamat' => 'required',
+    //         'hp' => 'required',
+    //         'meteran' => 'required',
+    //         ]);
+    //     $data = new pelanggan;
+    //     $data->rekening = $request->rekening;
+    //     $data->nama = $request->nama;
+    //     $data->alamat = $request->alamat;
+    //     $data->hp = $request->hp;
+    //     $data->meteran = $request->meteran;
+    //     $data->save();
 
-        return redirect('/pelanggan')->with('message','Tambah Data Berhasil');
-    }
+    //     return redirect('/pelanggan')->with('message','Tambah Data Berhasil');
+    // }
 
     /**
      * Display the specified resource.
@@ -79,7 +83,7 @@ class PelangganController extends Controller
     {
         //
         $data = pelanggan::find($id);
-        return view('pages.editpelanggan')->with('list', $data);
+        return view('pages.admin.pelanggan.edit')->with('list', $data);
     }
 
     /**
@@ -91,18 +95,19 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $this->validate($request,[
             'rekening' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
             'hp' => 'required',
+            // 'meteran' => 'required',
             ]);
         $data = pelanggan::find($id);
         $data->rekening = $request->rekening;
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->hp = $request->hp;
+        // $data->meteran = $request->meteran;
         $data->save();
 
         return redirect('/pelanggan')->with('message','Perubahan Data Berhasil');
@@ -122,4 +127,10 @@ class PelangganController extends Controller
         // redirect
         return \Redirect::to('/pelanggan')->with('message','Hapus Data Karyawan Berhasil');
     }
+
+    // public function datapribadi(){
+    //     $user_id = Auth::id();
+    //     $datapribadi = pelanggan::where('rekening',$user_id)->get();
+    //     dd($datapribadi);
+    // }
 }

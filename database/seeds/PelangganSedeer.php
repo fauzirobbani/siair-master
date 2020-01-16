@@ -16,7 +16,8 @@ class PelangganSedeer extends Seeder
         	'rekening' => 120100,
         	'nama' => 'Anwar Baharudin',
             'alamat' => 'Tompak RT 01',
-            'hp' => 6285239770202
+            'hp' => 6285239770202,
+            'meteran' => 0
         ]);
     }
 }

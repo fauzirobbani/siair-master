@@ -18,7 +18,8 @@ class CreatePelangganTable extends Migration
             $table->double('rekening')->unique();
             $table->string('nama');
             $table->string('alamat')->nullable();
-            $table->string('hp',15);
+            $table->double('hp',15);
+            $table->double('meteran');
             $table->timestamps();
         });
     }
