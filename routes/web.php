@@ -11,6 +11,12 @@
 |
 */
 
+$proxy_url = getenv('PROXY_URL');
+
+if (!empty($proxy_url)) {
+    URL::forceRootUrl($proxy_url);
+}
+
 // Route::get('/login', function () {
 //     return view('welcome');
 // });
