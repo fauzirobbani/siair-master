@@ -49,7 +49,7 @@ Route::post('/tagihan/pembayaran/{id}', 'TagihanController@storepembayaran')->na
 Route::resource('pelanggan', 'PelangganController');
 Route::resource('harga', 'HargaController');
 Route::resource('tagihan', 'TagihanController')->except(['datapelanggan']);
-Route::resource('laporan', 'laporanController');
+Route::resource('laporan', 'LaporanController');
 
 Route::group(['middleware' => ['auth']], function(){
 

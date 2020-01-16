@@ -8,7 +8,7 @@ use App\model\Transaksi;
 use App\model\Laporan;
 use App\Model\Harga;
 
-use App\pelanggan;
+use App\Model\pelanggan;
 
 class LaporanController extends Controller
 {

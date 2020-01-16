@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\model\pelanggan;
+use App\Model\Pelanggan;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -125,7 +125,7 @@ class PelangganController extends Controller
         $data = pelanggan::find($id);
         $data->delete();
         // redirect
-        return \Redirect::to('/pelanggan')->with('message','Hapus Data Karyawan Berhasil');
+        return redirect('/pelanggan')->with('message','Hapus Data Karyawan Berhasil');
     }
 
     // public function datapribadi(){

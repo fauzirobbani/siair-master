@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Transaksi;
-use App\model\Tagihan;
+use App\Model\Tagihan;
 use App\Model\Harga;
 use App\Model\Pelanggan;
 
