@@ -112,6 +112,6 @@ class HargaController extends Controller
         $data = harga::find($id);
         $data->delete();
         // redirect
-        return \Redirect::to('/harga')->with('message','Hapus Data harga Berhasil');
+        return redirect('/harga')->with('message','Hapus Data harga Berhasil');
     }
 }

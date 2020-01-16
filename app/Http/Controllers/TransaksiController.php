@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\Transaksi;
 use App\model\Tagihan;
 use App\Model\Harga;
-use App\Pelanggan;
+use App\Model\Pelanggan;
 
 class TransaksiController extends Controller
 {
@@ -19,9 +19,7 @@ class TransaksiController extends Controller
     public function index()
     {
         //
-        $tagihan = Tagihan::where('id')->first();
-        $pelanggan= Pelanggan::where('id')->first();
-        return view('pages.admin.laporan.laporan', compact('pelanggan', 'tagihan'));
+
 
     }
 

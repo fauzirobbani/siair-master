@@ -15,6 +15,11 @@
 //     return view('welcome');
 // });
 
+Route::get('api/tagihan', 'ApiController@tagihan')->name('api.tagihan');
+Route::get('api/laporan', 'ApiController@laporan')->name('api.laporan');
+Route::post('api/create_tagihan', 'ApiController@create_tagihan')->name('api.create.tagihan');
+Route::post('api/login', 'ApiController@login')->name('api.login');
+
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Route::get('/home', function () {

@@ -1,0 +1,31 @@
+stages:
+  - build-latest
+  - deploy-server
+
+build-docker-image-latest:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build-latest
+  environment: dev
+  script:
+    - 'ls'
+    - 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io'
+    - 'docker build -t $CONTAINER_IMAGE:latest .'
+    - 'docker push $CONTAINER_IMAGE:latest'
+  only:
+    - master
+
+deploy-to-dev:
+  image: "ruby:2.5.1"
+  stage: deploy-server
+  environment: dev
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh $USER_INSTANCE@$INSTACE_IP_ADDRESS bash --login "./deploy-casier.sh"
+  only:
+    - master
