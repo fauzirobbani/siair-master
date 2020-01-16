@@ -21,12 +21,12 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>tanggal</th>
-                                        <th>No Rekening</th>
+                                        <th>Tanggal</th>
+                                        <th>Nomor Rekening</th>
                                         <th>Nama</th>
                                         <th>Tagihan</th>
                                         <th>Pembayaran</th>
-                                        <th>kembalian</th>
+                                        <th>Kembalian</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
