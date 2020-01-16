@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\model\pelanggan;
+use App\Model\Pelanggan;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
