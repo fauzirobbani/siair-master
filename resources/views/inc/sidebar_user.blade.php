@@ -32,15 +32,7 @@
           <span class="menu-title">Laporan Pembayaran</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">
-          <span class="menu-title">Setting</span>
-        </a>
-      </li>
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="{{route('logout')}}">
-          <span class="menu-title">Logout</span>
-        </a>
-      </li> --}}
+
+
     </ul>
   </nav>

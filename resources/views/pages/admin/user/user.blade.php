@@ -17,7 +17,7 @@
                             </div>
 
                             @endif
-                            <table id="tabelpelanggan" class="table table-bordered table-striped">
+                            <table id="tabel_user" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -72,7 +72,7 @@
 
 <script>
         $(document).ready(function() {
-            $('#tabelpelanggan').DataTable();
+            $('#tabel_user').DataTable();
         } );
 </script>
 
