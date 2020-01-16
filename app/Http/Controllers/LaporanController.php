@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\model\Tagihan;
-use App\model\Transaksi;
-use App\model\Laporan;
+use App\Model\Tagihan;
+use App\Model\Transaksi;
+use App\Model\Laporan;
 use App\Model\Harga;
 
 use App\Model\pelanggan;
