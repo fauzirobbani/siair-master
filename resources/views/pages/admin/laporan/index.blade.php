@@ -17,7 +17,7 @@
                             </div>
 
                             @endif
-                            <table id="tabeltagihan" class="table table-bordered table-striped">
+                            <table id="tabel_laporan" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -67,7 +67,7 @@
 
 <script>
         $(document).ready(function() {
-            $('#tabelpelanggan').DataTable();
+            $('#tabel_laporan').DataTable();
         } );
 </script>
 

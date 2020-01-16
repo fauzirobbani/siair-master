@@ -59,11 +59,11 @@
 </div>
 
 
-<script>
+{{-- <script>
         $(document).ready(function() {
             $('#tabelpelanggan').DataTable();
         } );
-</script>
+</script> --}}
 
 @endsection
 
