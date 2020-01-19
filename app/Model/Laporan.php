@@ -17,6 +17,6 @@ class Laporan extends Model
 
     public function transaksi()
     {
-        return $this->hasOne('App\transaksi', 'id', 'id_tagihan');
+        return $this->hasOne('App\Transaksi', 'id', 'id_tagihan');
     }
 }
