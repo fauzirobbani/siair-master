@@ -4,7 +4,6 @@
 
 <div class="main-panel">
     <div class="content-wrapper">
-        <button class="btn btn-gradient-success mt-4" onclick="window.location.href='{{ route('pelanggan.create') }}'">+ Tambah Pelanggan</button> <br><br>
         <div class="row">
             <div class="col-md-12 stretch-card">
                 <div class="card">
