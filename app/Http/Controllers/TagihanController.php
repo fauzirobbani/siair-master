@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Model\Tagihan;
 use App\Model\Transaksi;
 use App\Model\Harga;
-use App\Model\pelanggan;
+use App\Model\Pelanggan;
 use Validation;
 
 use Carbon\Carbon;
