@@ -29,6 +29,6 @@ class Tagihan extends Model
 
     public function transaksi()
     {
-        return $this->hasOne('App\Model\transaksi', 'id_tagihan', 'id');
+        return $this->hasOne('App\Model\Transaksi', 'id_tagihan', 'id');
     }
 }
