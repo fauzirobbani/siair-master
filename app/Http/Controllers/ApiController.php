@@ -135,6 +135,45 @@ class ApiController extends Controller
 
     }
 
+    public function pelanggan($id)
+    {
+        $list = Pelanggan::find($id);
+        $user = User::where('username', $list->rekening)->first();
+
+        return response()->json([
+            'status' => true,
+            'data' => ['pelanggan' => $list, 'user' => $user],
+            'message' => 'login succes'
+        ]);
+    }
+
+    public function pelanggan_update(Request $request, $id)
+    {
+        $this->validate($request,[
+            // 'rekening' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'hp' => 'required',
+            'email' => 'required',
+            ]);
+        $data = Pelanggan::find($id);
+        $data->nama = $request->nama;
+        $data->alamat = $request->alamat;
+        $data->hp = $request->hp;
+        $data->save();
+
+        $user = User::where('username', $data->rekening)->first();
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->save();
+
+        return response()->json([
+            'status' => true,
+            'data' => [],
+            'message' => 'succes update data'
+        ]);
+    }
+
     public function laporan_user($id_pelanggan)
     {
 
