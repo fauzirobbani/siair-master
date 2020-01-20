@@ -8,7 +8,7 @@ use App\Model\Transaksi;
 use App\Model\Laporan;
 use App\Model\Harga;
 
-use App\Model\pelanggan;
+use App\Model\Pelanggan;
 
 class LaporanController extends Controller
 {
@@ -22,7 +22,7 @@ class LaporanController extends Controller
         //
         //
 
-        $show = transaksi::with('pelanggan','tagihan')->get();
+        $show = Transaksi::with('pelanggan','tagihan')->get();
 
         $data = [
             'show' => $show,
