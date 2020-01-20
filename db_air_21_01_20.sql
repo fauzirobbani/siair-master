@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 03:09 PM
+-- Generation Time: Jan 20, 2020 at 11:02 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -108,11 +108,8 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id`, `rekening`, `nama`, `alamat`, `hp`, `meteran`, `created_at`, `updated_at`) VALUES
-(1, 120100, 'Anwar Baharudin update', 'Tompak RT 01', 6285239770202, 0, NULL, '2020-01-14 05:36:48'),
-(2, 120200, 'Baharudin', 'Tompak RT 02', 6285293878654, 100, '2019-08-31 21:02:02', '2019-11-17 03:17:19'),
-(3, 120300, 'Sulaiman', 'Tompak RT 03', 83456787, 1500, '2019-11-14 02:28:38', '2019-11-24 05:46:05'),
-(4, 120500, 'Annisa', 'Rumah', 8344722, 1256, '2019-11-24 03:22:04', '2020-01-20 07:03:50'),
-(5, 120501, 'Budi Setiawan', 'Tompak RT 05', 621819117, 0, '2019-12-05 03:56:22', '2019-12-05 03:56:22');
+(5, 120501, 'Budi Setiawan', 'Tompak RT 05', 621819117, 100, '2019-12-05 03:56:22', '2020-01-20 14:01:21'),
+(6, 120202, 'Baharudin ahmad', 'Tompak RT 01', 4572358472538, 0, '2020-01-20 07:36:42', '2020-01-20 07:36:42');
 
 -- --------------------------------------------------------
 
@@ -139,13 +136,8 @@ CREATE TABLE `tagihan` (
 --
 
 INSERT INTO `tagihan` (`id`, `id_pelanggan`, `meteran_baru`, `volume`, `tagihan`, `status_bayar`, `tanggal`, `bulan`, `tahun`, `created_at`, `updated_at`) VALUES
-(1, 1, 12, 12, 40000, 1, '2019-10-27', 10, 2019, '2019-10-14 16:56:02', '2019-10-27 22:36:03'),
-(2, 2, 100, 100, 304000, 1, '2019-11-17', 10, 2019, '2019-10-16 21:14:14', '2019-11-17 03:17:19'),
-(3, 4, 1500, 1500, 4504000, 1, '2019-11-24', 11, 2019, '2019-11-14 02:47:21', '2019-11-24 05:46:04'),
-(4, 5, 1256, 1256, 3772000, 1, '2020-01-14', 12, 2019, '2019-12-05 03:57:16', '2020-01-14 05:44:14'),
-(5, 3, 1500, 0, 4000, 0, NULL, 1, 2020, '2020-01-15 06:16:04', '2020-01-15 06:16:04'),
-(6, 1, 500, 500, 1504000, 0, NULL, 1, 2020, '2020-01-15 06:33:10', '2020-01-15 07:02:07'),
-(7, 4, 1500, 244, 736000, 0, NULL, 1, 2020, '2020-01-15 07:09:37', '2020-01-15 07:09:37');
+(13, 5, 100, 100, 304000, 1, '2020-01-20', 1, 2020, '2020-01-20 07:58:31', '2020-01-20 14:01:21'),
+(14, 6, 20, 20, 64000, 0, NULL, 1, 2020, '2020-01-20 14:49:01', '2020-01-20 14:49:01');
 
 -- --------------------------------------------------------
 
@@ -171,10 +163,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `id_tagihan`, `id_pelanggan`, `pembayaran`, `kembalian`, `tanggal_transaksi`, `bulan_transaksi`, `tahun_transaksi`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 50000, 10000, '2019-10-27', 10, 2019, '2019-10-27 22:36:04', '2019-10-27 22:36:04'),
-(3, 2, 2, 400000, 96000, '2019-11-17', 10, 2019, '2019-11-17 03:17:19', '2019-11-17 03:17:19'),
-(4, 3, 4, 4600000, 96000, '2019-11-24', 11, 2019, '2019-11-24 05:46:05', '2019-11-24 05:46:05'),
-(5, 4, 5, 4000000, 228000, '2020-01-14', 12, 2019, '2020-01-14 05:44:14', '2020-01-14 05:44:14');
+(10, 13, 5, 305000, 1000, '2020-01-20', 1, 2020, '2020-01-20 14:01:21', '2020-01-20 14:01:21');
 
 -- --------------------------------------------------------
 
@@ -201,9 +190,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', 'admin@admin.com', NULL, '$2y$10$h2wz6v5.xge1j2amEMK4KuNRHQOeQ2luzvkTqKZa9rXA7KWuMrlwu', 1, NULL, '2019-10-13 17:18:56', '2019-10-13 17:18:56'),
-(2, 'Anwar Baharudin', '120100', 'member@member.com', NULL, '$2y$10$Qmq/qnVpITIGrqPrd7oNEuDVgOhzpGpAPQlB.XDM5cHeaukfibyJq', 0, NULL, '2019-11-06 23:44:36', '2019-11-06 23:44:36'),
 (6, 'Annisa', '120500', 'annisa@annisa.com', NULL, '$2y$10$sX605xK4XCuNwfXebO.xi.jitHcXruIiKHfuA49C.5JUmdw.Mcix6', 0, NULL, '2019-11-24 03:22:04', '2020-01-20 07:03:50'),
-(7, 'Budi Setiawan', '120501', 'budi@setiawan.com', NULL, '$2y$10$7v5sOfJsQn9FU4cWATZIce52OiRpeg/7BtzthKo1tyvgG9.x0JkSi', 0, NULL, '2019-12-05 03:56:22', '2019-12-05 03:56:22');
+(7, 'Budi Setiawan', '120501', 'budi@setiawan.com', NULL, '$2y$10$7v5sOfJsQn9FU4cWATZIce52OiRpeg/7BtzthKo1tyvgG9.x0JkSi', 0, NULL, '2019-12-05 03:56:22', '2019-12-05 03:56:22'),
+(8, 'Baharudin ahmad', '120202', 'lanang@lanang.com', NULL, '$2y$10$dlwgzOdSSchJlOKWoF74N.dpXgSvvjvOLYkq19Rm9FiDj9fnsV9Ua', 0, NULL, '2020-01-20 07:36:42', '2020-01-20 07:36:42');
 
 --
 -- Indexes for dumped tables
@@ -273,25 +262,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

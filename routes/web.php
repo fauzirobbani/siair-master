@@ -43,7 +43,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/tagihan/datapelanggan', 'TagihanController@datapelanggan')->name('tagihan.datapelanggan');
 
 Route::get('/tagihan/pembayaran/{id}', 'TagihanController@pembayaran')->name('tagihan.pembayaran');
-Route::post('/tagihan/pembayaran/{id}', 'TagihanController@storepembayaran')->name('tagihan.pembayaran.store');
+Route::post('/tagihan/pembayaran/asw/{id}', 'TagihanController@storepembayaran')->name('tagihan.pembayaran.store.asw');
 
 // Route::get('/datapribadi','PelangganCOntroller@datapribadi');
 

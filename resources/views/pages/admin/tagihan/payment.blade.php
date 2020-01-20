@@ -9,7 +9,7 @@
       <div class="card-body">
         <p class="card-title">Pembayaran</p>
         <table class="table table-bordered"></table>
-        <form action="{{ route('tagihan.pembayaran.store', $pelanggan->id) }}" method="POST">{{ csrf_field() }}
+        <form action="{{ route('tagihan.pembayaran.store.asw', $tagihan->id) }}" method="POST">{{ csrf_field() }}
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">

@@ -21,7 +21,7 @@ class TagihanController extends Controller
     {
         //
 
-        $show = tagihan::with('pelanggan')->where('status_bayar', '0')->get();
+        $show = Tagihan::with('pelanggan')->where('status_bayar', '0')->get();
 
         $data = [
             'show' => $show,
@@ -144,7 +144,7 @@ class TagihanController extends Controller
     public function pembayaran($id)
     {
         //
-        $tagihan = Tagihan::where('id', $id)->first();
+        $tagihan = Tagihan::where('id_pelanggan', $id)->first();
         $pelanggan= Pelanggan::where('id',$id)->first();
         return view('pages.admin.tagihan.payment', compact('pelanggan', 'tagihan'));
     }
@@ -155,6 +155,7 @@ class TagihanController extends Controller
         $tanggal = Carbon::now()->format('Y/m/d');
 
         $tagihan = Tagihan::findOrfail($id);
+
         $tagihan->status_bayar = 1;
         $tagihan->tanggal = $tanggal;
 
@@ -171,7 +172,7 @@ class TagihanController extends Controller
 
         $transaksi->save();
 
-        $meteran = Pelanggan::findOrfail($tagihan->id);
+        $meteran = Pelanggan::findOrfail($tagihan->id_pelanggan);
         $meteran->meteran = $meteran->meteran+$tagihan->meteran_baru;
         $meteran->save();
 
