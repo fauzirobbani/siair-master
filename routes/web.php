@@ -25,6 +25,10 @@ Route::get('api/tagihan', 'ApiController@tagihan')->name('api.tagihan');
 Route::get('api/laporan', 'ApiController@laporan')->name('api.laporan');
 Route::post('api/create_tagihan', 'ApiController@create_tagihan')->name('api.create.tagihan');
 Route::post('api/login', 'ApiController@login')->name('api.login');
+Route::post('api/login_user', 'ApiController@login_user')->name('api.login.user');
+
+Route::get('api/laporan/{id_pelanggan}', 'ApiController@laporan_user')->name('api.laporan.pelanggan');
+Route::get('api/tagihan/{id_pelanggan}', 'ApiController@tagihan_user')->name('api.laporan.tagihan');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 

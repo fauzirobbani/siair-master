@@ -47,7 +47,7 @@ class DataPribadiController extends Controller
         //
         // dd($request);
         $this->validate($request,[
-            'rekening' => 'required',
+            // 'rekening' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
             'hp' => 'required',

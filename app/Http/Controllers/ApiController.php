@@ -107,4 +107,58 @@ class ApiController extends Controller
 
     }
 
+    public function login_user(Request $request)
+    {
+        $user = User::where('username', $request->username)->where('status', 0)->first();
+
+        if (empty($user)) {
+            return response()->json([
+                'status' => false,
+                'data' => null,
+                'message' => 'User tidk dtemukan'
+            ], 404);
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'status' => false,
+                'data' => null,
+                'message' => 'password salah'
+            ], 400);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $user,
+            'message' => 'login succes'
+        ]);
+
+    }
+
+    public function laporan_user($id_pelanggan)
+    {
+
+         $show = Tagihan::with('pelanggan', 'transaksi')->where('id_pelanggan', $id_pelanggan)->where('status_bayar', 1)->get();
+
+        return response()->json([
+            'status' => true,
+            'data' => $show,
+            'message' => 'succes'
+        ]);
+
+    }
+
+    public function tagihan_user($id_pelanggan)
+    {
+
+        $show = Tagihan::with('pelanggan', 'transaksi')->where('id_pelanggan', $id_pelanggan)->where('status_bayar', 0)->get();
+
+        return response()->json([
+            'status' => true,
+            'data' => $show,
+            'message' => 'succes'
+        ]);
+
+    }
+
 }
