@@ -20,10 +20,10 @@
                                     <Label>email</Label>
                                     <input type="mail" class="form-control" name="email" value="{{ $user->email }}" placeholder="{{ $user->email }}">
                                 </div>
-                              <div class="form-group">
+                              {{-- <div class="form-group">
                                 <Label>Nomer Rekening</Label>
                                 <input type="text" class="form-control" name="rekening" value="{{ $list->rekening }}" placeholder="{{ $list->rekening }}">
-                              </div>
+                              </div> --}}
                               <div class="form-group">
                                 <Label>Alamat</Label>
                                 <input type="text" class="form-control" name="alamat" value="{{ $list->alamat }}" placeholder="{{ $list->alamat }}">
