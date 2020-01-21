@@ -69,6 +69,21 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="meteran" class="col-md-4 col-form-label text-md-right">{{ __('Meteran') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="meteran" type="number" min="0" class="form-control @error('meteran') is-invalid @enderror" name="meteran" value="{{ old('meteran') }}" required autocomplete="meteran" autofocus>
+
+                                    @error('meteran')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                                 <div class="col-md-6">

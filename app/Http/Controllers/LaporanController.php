@@ -9,6 +9,8 @@ use App\Model\Laporan;
 use App\Model\Harga;
 
 use App\Model\Pelanggan;
+// use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class LaporanController extends Controller
 {
@@ -64,7 +66,11 @@ class LaporanController extends Controller
     public function show($id)
     {
         $data = Transaksi::where('id', $id)->first();
-        return view('admin.invoice.index', compact('data'));
+
+        // return view('pages.admin.invoice.index', compact('data'));
+        $pdf = PDF::loadView('pages.admin.invoice.index', compact('data'))->setPaper('a4', 'landscape');
+
+        return $pdf->stream($data->tanggal_transaksi.'_'.$data->pelanggan['rekening'].'_invoice.pdf');
     }
 
     /**
