@@ -19,7 +19,7 @@ class DataPribadiController extends Controller
         $id_pelanggan = Auth::user()->username;
         // dd($id_user);
 
-        $pelanggan = pelanggan::where('rekening', $id_pelanggan)->first();
+        $pelanggan = Pelanggan::where('rekening', $id_pelanggan)->first();
         $user = User::where('id', $id_user)->first();
 
 
@@ -29,7 +29,7 @@ class DataPribadiController extends Controller
     public function edit($id)
     {
         //
-        $list = pelanggan::find($id);
+        $list = Pelanggan::find($id);
         $user = User::where('username', $list->rekening)->first();
 
         return view('pages.users.datapribadi.edit', compact('user', 'list'));
@@ -53,7 +53,7 @@ class DataPribadiController extends Controller
             'hp' => 'required',
             'email' => 'required',
             ]);
-        $data = pelanggan::find($id);
+        $data = Pelanggan::find($id);
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->hp = $request->hp;
