@@ -35,7 +35,7 @@
                                     @if(count($list) > 0)
                                     @foreach($list['show'] as $list)
                                     <tr>
-                                        <td>{{ $list->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $list->tanggal_transaksi }}</td>
                                         <td>{{ $list->pelanggan->rekening }}</td>
                                         <td>{{ $list->pelanggan->nama }}</td>
