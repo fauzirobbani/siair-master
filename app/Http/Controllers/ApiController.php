@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\model\Tagihan;
-use App\model\Transaksi;
-use App\Model\pelanggan;
+use App\Model\Tagihan;
+use App\Model\Transaksi;
+use App\Model\Pelanggan;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\User;
@@ -17,7 +17,7 @@ class ApiController extends Controller
     {
         //
 
-        $show = tagihan::with('pelanggan')->where('status_bayar', '0')->get();
+        $show = Tagihan::with('pelanggan')->where('status_bayar', '0')->get();
 
         return response()->json([
             'status' => true,
