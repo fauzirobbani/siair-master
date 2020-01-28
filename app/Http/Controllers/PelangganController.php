@@ -17,7 +17,7 @@ class PelangganController extends Controller
     public function index()
     {
         //
-        $show = pelanggan::all();
+        $show = Pelanggan::all();
         $data = [
             'show' => $show,
         ];
@@ -82,7 +82,7 @@ class PelangganController extends Controller
     public function edit($id)
     {
         //
-        $data = pelanggan::find($id);
+        $data = Pelanggan::find($id);
         return view('pages.admin.pelanggan.edit')->with('list', $data);
     }
 
@@ -122,7 +122,7 @@ class PelangganController extends Controller
     public function destroy($id)
     {
         //
-        $data = pelanggan::find($id);
+        $data = Pelanggan::find($id);
         $data->delete();
         // redirect
         return redirect('/pelanggan')->with('message','Hapus Data Karyawan Berhasil');

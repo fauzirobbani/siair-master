@@ -200,4 +200,16 @@ class ApiController extends Controller
 
     }
 
+    public function pelanggan_all()
+    {
+        //
+        $show = Pelanggan::all();
+
+        return response()->json([
+            'status' => true,
+            'data' => $show,
+            'message' => 'succes'
+        ]);
+    }
+
 }

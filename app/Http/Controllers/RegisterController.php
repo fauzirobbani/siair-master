@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'nama' => $data['name'],
             'alamat' => $data['alamat'],
             'hp' => $data['hp'],
-            'meteran' => '0',
+            'meteran' => $data['meteran'],
         ]);
 
         return redirect('/pelanggan')->with('message','Tambah Data Berhasil');
