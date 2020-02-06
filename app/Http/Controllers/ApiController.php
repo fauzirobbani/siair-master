@@ -208,7 +208,7 @@ class ApiController extends Controller
     public function tagihan_user($id_pelanggan)
     {
 
-        $show = Tagihan::with('pelanggan', 'transaksi')->where('id_pelanggan', $id_pelanggan)->where('status_bayar', 0)->get();
+        $show = Tagihan::with('pelanggan', 'transaksi')->where('id_pelanggan', $id_pelanggan)->where('status_bayar', 0)->first();
 
         return response()->json([
             'status' => true,
