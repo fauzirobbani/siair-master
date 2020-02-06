@@ -81,7 +81,7 @@ class ApiController extends Controller
         //
         //
 
-        $user = User::where('username', $request->username)->where('status', 1)->first();
+        $user = User::where('username', $request->username)->first();
 
         if (empty($user)) {
             return response()->json([
