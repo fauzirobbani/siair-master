@@ -134,6 +134,24 @@ class ApiController extends Controller
         ]);
 
     }
+    
+    public function pelanggan_by_rekening($rekening) {
+        $pelanggan = Pelanggan::where('rekening', $rekening)->first();
+        
+        if (empty($pelanggan)) {
+            return response()->json([
+                'status' => false,
+                'data' => null,
+                'message' => 'pelanggan tidak ditemukan'
+            ], 404);
+        }
+        
+        return response()->json([
+            'status' => true,
+            'data' => $pelanggan,
+            'message' => 'pelanggan sukses'
+        ]);
+    }
 
     public function pelanggan($id)
     {
