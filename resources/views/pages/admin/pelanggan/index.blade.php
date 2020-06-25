@@ -46,11 +46,11 @@
                                             <button class="btn btn-small btn-warning" style="margin-right: 5px" onclick="window.location.
                                                 href='{{ route('pelanggan.edit', $list->id) }}'">Ubah
                                             </button>
-                                            <form action="{{ route('pelanggan.destroy', $list->id) }}" method="POST">
+                                            {{-- <form action="{{ route('pelanggan.destroy', $list->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-small btn-primary">Hapus</button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                     @endforeach
