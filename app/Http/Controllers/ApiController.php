@@ -81,7 +81,7 @@ class ApiController extends Controller
         //
         //
 
-        $user = User::where('username', $request->username)->where('status', 1)->first();
+        $user = User::where('username', $request->username)->first();
 
         if (empty($user)) {
             return response()->json([
@@ -133,6 +133,24 @@ class ApiController extends Controller
             'message' => 'login succes'
         ]);
 
+    }
+    
+    public function pelanggan_by_rekening($rekening) {
+        $pelanggan = Pelanggan::where('rekening', $rekening)->first();
+        
+        if (empty($pelanggan)) {
+            return response()->json([
+                'status' => false,
+                'data' => null,
+                'message' => 'pelanggan tidak ditemukan'
+            ], 404);
+        }
+        
+        return response()->json([
+            'status' => true,
+            'data' => $pelanggan,
+            'message' => 'pelanggan sukses'
+        ]);
     }
 
     public function pelanggan($id)
@@ -190,7 +208,7 @@ class ApiController extends Controller
     public function tagihan_user($id_pelanggan)
     {
 
-        $show = Tagihan::with('pelanggan', 'transaksi')->where('id_pelanggan', $id_pelanggan)->where('status_bayar', 0)->get();
+        $show = Tagihan::with('pelanggan', 'transaksi')->where('id_pelanggan', $id_pelanggan)->where('status_bayar', 0)->first();
 
         return response()->json([
             'status' => true,
