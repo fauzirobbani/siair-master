@@ -144,8 +144,8 @@ class TagihanController extends Controller
     public function pembayaran($id)
     {
         //
-        $tagihan = Tagihan::where('id_pelanggan', $id)->first();
-        $pelanggan= Pelanggan::where('id',$id)->first();
+        $tagihan = Tagihan::where('id', $id)->first();
+        $pelanggan= Pelanggan::where('id', $tagihan->id_pelanggan)->first();
         return view('pages.admin.tagihan.payment', compact('pelanggan', 'tagihan'));
     }
 

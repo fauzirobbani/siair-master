@@ -134,10 +134,10 @@ class ApiController extends Controller
         ]);
 
     }
-    
+
     public function pelanggan_by_rekening($rekening) {
         $pelanggan = Pelanggan::where('rekening', $rekening)->first();
-        
+
         if (empty($pelanggan)) {
             return response()->json([
                 'status' => false,
@@ -145,7 +145,7 @@ class ApiController extends Controller
                 'message' => 'pelanggan tidak ditemukan'
             ], 404);
         }
-        
+
         return response()->json([
             'status' => true,
             'data' => $pelanggan,
@@ -226,6 +226,24 @@ class ApiController extends Controller
         return response()->json([
             'status' => true,
             'data' => $show,
+            'message' => 'succes'
+        ]);
+    }
+
+    public function grafik()
+    {
+        $bulan = [
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni',
+            7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
+        ];
+        $data = Tagihan::selectRaw('bulan, sum(volume) as jumlah_volume')->groupBy('bulan')->orderBy('bulan', 'ASC')->get();
+        foreach ($data as $key => $value) {
+            $data[$key]->bulan = $bulan[$value->bulan];
+            $data[$key]->jumlah_volume = intval($value->jumlah_volume);
+        }
+        return response()->json([
+            'status' => true,
+            'data' => $data,
             'message' => 'succes'
         ]);
     }

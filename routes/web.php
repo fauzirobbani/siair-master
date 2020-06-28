@@ -32,6 +32,7 @@ Route::get('api/pelanggan/{id}', 'ApiController@pelanggan')->name('api.pelanggan
 Route::get('api/pelanggan/rekening/{rekening}', 'ApiController@pelanggan_by_rekening')->name('api.pelanggan.rekening');
 Route::get('api/laporan/{id_pelanggan}', 'ApiController@laporan_user')->name('api.laporan.pelanggan');
 Route::get('api/tagihan/{id_pelanggan}', 'ApiController@tagihan_user')->name('api.laporan.tagihan');
+Route::get('api/grafik', 'ApiController@grafik')->name('api.tagihan.grafik');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
