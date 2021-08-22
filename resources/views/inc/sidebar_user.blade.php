@@ -4,7 +4,7 @@
       <li class="nav-item nav-profile">
         <a href="#" class="nav-link">
           <div class="nav-profile-image">
-            <img src="http://siair.anproject.web.id/images/faces/man.png" alt="profile">
+            <img src="https://siair.anproject.web.id/images/faces/man.png" alt="profile">
             <span class="login-status online"></span>
           </div>
           <div class="nav-profile-text d-flex flex-column">
