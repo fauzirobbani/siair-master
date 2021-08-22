@@ -14,6 +14,7 @@
 $proxy_url = getenv('PROXY_URL');
 
 if (!empty($proxy_url)) {
+    URL::forceScheme('https');
     URL::forceRootUrl($proxy_url);
 }
 

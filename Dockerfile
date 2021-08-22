@@ -22,5 +22,5 @@ RUN chmod -R 755 /var/www/storage /var/www/bootstrap
 
 WORKDIR /var/www
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=./ --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --version=1.10.15 --install-dir=./ --filename=composer
 RUN ./composer install --no-dev
