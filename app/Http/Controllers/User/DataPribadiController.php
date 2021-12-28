@@ -28,6 +28,7 @@ class DataPribadiController extends Controller
 
     public function edit($id)
     {
+        
         //
         $list = Pelanggan::find($id);
         $user = User::where('username', $list->rekening)->first();

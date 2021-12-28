@@ -15,19 +15,19 @@
                               {{ csrf_field() }}
                               <div class="form-group">
                                 <Label>Nama</Label>
-                                <input type="text" class="form-control" name="nama" value="{{ $list->nama }}" placeholder="{{ $list->nama }}">
+                                <input type="text" class="form-control" name="nama" value="{{ $list->nama }}" placeholder="{{ $list->nama }}" required>
                               </div>
                               <div class="form-group">
                                 <Label>Nomer Rekening</Label>
-                                <input type="text" class="form-control" name="rekening" value="{{ $list->rekening }}" placeholder="{{ $list->rekening }}">
+                                <input type="text" class="form-control" name="rekening" value="{{ $list->rekening }}" placeholder="{{ $list->rekening }}" required>
                               </div>
                               <div class="form-group">
                                 <Label>Alamat</Label>
-                                <input type="text" class="form-control" name="alamat" value="{{ $list->alamat }}" placeholder="{{ $list->alamat }}">
+                                <input type="text" class="form-control" name="alamat" value="{{ $list->alamat }}" placeholder="{{ $list->alamat }}" required>
                               </div>
                               <div class="form-group">
                                 <Label>HP</Label>
-                                <input type="text" class="form-control" name="hp" value="{{ $list->hp }}" placeholder="{{ $list->hp }}">
+                                <input type="text" class="form-control" name="hp" value="{{ $list->hp }}" placeholder="{{ $list->hp }}" required>
                               </div>
                               <button class="btn btn-success">Submit</button>
                           </form>

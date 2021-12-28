@@ -15,7 +15,7 @@
               <div class="form-group">
                 <Label>No Rekening</Label>
                 {{-- <input type="text" class="form-control" name="no_rekening" id="no_rekening" placeholder=""> --}}
-                <select name="no_rekening" id="no_rekening" class="form-control rekening">
+                <select name="no_rekening" id="no_rekening" class="form-control rekening" required>
                   <option value="">Silahkan Pilih</option>
                   @foreach ($pelanggan as $item)
                     <option value="{{$item->rekening}}">{{$item->rekening}}</option>
@@ -42,11 +42,11 @@
               </div>
               <div class="form-group">
                 <Label>Meteran Baru</Label>
-                <input type="text" class="form-control" name="meteran_baru" id="meteran_baru" placeholder="Meteran Baru">
+                <input type="number" class="form-control" name="meteran_baru" id="meteran_baru" placeholder="Meteran Baru" min="0" oninput="validity.valid||(value='');" required>
               </div>
               <div class="form-group">
                 <Label>Volume</Label>
-                <input type="text" class="form-control" name="volume" id="volume">
+                <input type="text" class="form-control" style="pointer-events:none; background:#e9ecef;" name="volume" id="volume" required>
               </div>
 
               <table id="tabelpelanggan" class="table table-bordered table-striped" >
@@ -54,13 +54,13 @@
                   <tr>
                     <th>Harga (Rp)</th>
                     <th>Beban (Rp)</th>
-                    <th>Total (Rp)</th>
+                    <th >Total (Rp)</th>
                   </tr>
                   <tr>
                     <th><input type="text" class="form-control" name="harga_pakai" id="harga_pakai" value="{{$harga->harga_pakai}}" disabled></th>
                     <input type="text" class="form-control" name="harga_pakai_utama" id="harga_pakai_utama" value="{{$harga->harga_pakai}}" hidden>
                     <th><input type="text" class="form-control" name="harga_beban" id="harga_beban" value="{{$harga->harga_beban}}" disabled></th>
-                    <th><input type="text" class="form-control" name="total" id="total" value="" ></th>
+                    <th><input type="text" style="pointer-events:none; background:#e9ecef;" class="form-control" name="total" id="total" value="" ></th>
                   </tr>
                 </thead>
               </table>

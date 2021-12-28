@@ -31,6 +31,10 @@ class RegisterController extends Controller
      */
     protected function create(Request $data)
     {
+        $validatedData = $data->validate([
+            'email' => 'unique:users',
+        ]);
+        
         User::create([
             'name' => $data['name'],
             'username' => $data['username'],
@@ -45,6 +49,10 @@ class RegisterController extends Controller
 
     protected function createpelanggan(Request $data)
     {
+        $validatedData = $data->validate([
+            'email' => 'unique:users',
+        ]);
+        
         User::create([
             'name' => $data['name'],
             'username' => $data['username'],

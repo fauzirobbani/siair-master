@@ -49,7 +49,7 @@
               </table>
               <div class="form-group">
                 <Label style="font:bold">Cash</Label>
-                <input type="text" class="form-control" name="pembayaran" id="pembayaran">
+                <input type="number" class="form-control" name="pembayaran" id="pembayaran" min="0" oninput="validity.valid||(value='');" required>
               </div>
               <div class="form-group">
                 <Label style="font:bold">Kembalian</Label>
